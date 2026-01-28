@@ -36,7 +36,7 @@ variable "acr_name" {
 }
 
 variable "github_org_name" {
-  description = "devops-project-adrian-dmytryk"
+  description = "Adrian-CICD-Project"
   type        = string
 }
 
