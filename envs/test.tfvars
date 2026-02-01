@@ -20,7 +20,7 @@ node_vm_size = "Standard_B4ms"
 node_count   = 1
 
 # --- GitHub ---
-github_org_name = "devops-project-adrian-dmytryk"
+github_org_name = "Adrian-CICD-Project"
 
 # --- Tagi governance ---  
 tags = {
