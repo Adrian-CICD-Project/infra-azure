@@ -22,9 +22,10 @@ param(
 
 Write-Output "Stopping AKS cluster \$clustername in RG \$resourcegroupname"
 
-# TODO: tutaj docelowo:
-# Connect-AzAccount -Identity
-# Stop-AzAksCluster -ResourceGroupName \$resourcegroupname -Name \$clustername
+Connect-AzAccount -Identity
+Stop-AzAksCluster -ResourceGroupName \$resourcegroupname -Name \$clustername
+
+Write-Output "AKS cluster \$clustername stopped successfully"
 EOF
 }
 
@@ -34,8 +35,8 @@ resource "azurerm_automation_schedule" "daily" {
   automation_account_name = azurerm_automation_account.aa.name
   frequency               = "Day"
   interval                = 1
-  timezone                = "UTC"
-  start_time              = "${formatdate("YYYY-MM-DD", timestamp())}T${var.schedule_time}:00Z"
+  timezone                = "Central European Standard Time"
+  start_time              = "${formatdate("YYYY-MM-DD", timestamp())}T${var.schedule_time}:00+01:00"
 }
 
 resource "azurerm_automation_job_schedule" "shutdown_job" {

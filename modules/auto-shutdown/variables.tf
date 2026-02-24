@@ -15,5 +15,5 @@ variable "location" {
 
 variable "schedule_time" {
   type        = string
-  description = "Time in HH:MM (UTC) for shutdown schedule"
+  description = "Time in HH:MM (Central European) for shutdown schedule"
 }

@@ -112,7 +112,7 @@ module "auto_shutdown_test" {
   resource_group_name = module.rg.rg_name
   aks_name            = module.aks_test.aks_name
   location            = module.rg.location
-  schedule_time       = "23:00"
+  schedule_time       = "22:00"
 }
 
 ########################
@@ -124,5 +124,5 @@ module "auto_shutdown_prod" {
   resource_group_name = module.rg.rg_name
   aks_name            = module.aks_prod.aks_name
   location            = module.rg.location
-  schedule_time       = "23:00"
+  schedule_time       = "22:00"
 }
