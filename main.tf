@@ -104,6 +104,22 @@ module "aks_prod" {
 
 
 ########################
+# KEY VAULT
+########################
+module "key_vault" {
+  source = "./modules/key-vault"
+
+  key_vault_name      = "kv-devops-poc01-adrian"
+  resource_group_name = module.rg.rg_name
+  location            = module.rg.location
+
+  aks_kubelet_identity_object_ids = [
+    module.aks_test.kubelet_identity_object_id,
+    module.aks_prod.kubelet_identity_object_id,
+  ]
+}
+
+########################
 # AUTO-SHUTDOWN – TEST
 ########################
 module "auto_shutdown_test" {
