@@ -38,7 +38,10 @@ infra-azure/
 │   ├── network/
 │   ├── acr/
 │   ├── aks/
-│   └── auto-shutdown/
+│   ├── auto-shutdown/
+│   └── key-vault/
+├── docs/
+│   └── key-vault-external-secrets-setup.md
 ├── scripts/
 │   ├── deploy.sh
 │   ├── destroy.sh
@@ -186,15 +189,27 @@ Creates:
 - Automation Account
 - Runbook
 - Schedule
-- Daily shutdown of AKS clusters at configured hour
+- Daily shutdown of AKS clusters at 22:00 (Central European Time)
+
+### key-vault
+
+Creates:
+
+- Azure Key Vault with RBAC authorization
+- Role assignment `Key Vault Secrets User` for AKS kubelet identities
+- Role assignment `Key Vault Secrets Officer` for Terraform identity
+
+Used together with External Secrets Operator on AKS to securely deliver secrets (GitHub App keys, tokens) to Kubernetes without storing them in Git.
+
+> **Full setup guide:** [docs/key-vault-external-secrets-setup.md](docs/key-vault-external-secrets-setup.md)
 
 ---
 
 ## Secrets
 
-This repo does not require any GitHub Secrets.
+Application secrets (GitHub App keys, tokens) are stored in **Azure Key Vault** and delivered to AKS clusters via **External Secrets Operator**.
 
-Secrets exist only in CI/CD for the application repository (e.g., ACR credentials, Sonar, DTrack).
+No secrets are stored in this repository or in Git history.
 
 ---
 
