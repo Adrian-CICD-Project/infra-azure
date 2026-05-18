@@ -38,7 +38,7 @@ module "aks_test" {
 
   node_vm_size   = var.node_vm_size
   node_count     = var.node_count
-  max_pods       = 60  
+  max_pods       = 60
   vnet_subnet_id = module.network.aks_subnet_id
   acr_id         = module.acr.acr_id
 }
@@ -54,7 +54,7 @@ module "aks_prod" {
 
   node_vm_size   = var.node_vm_size
   node_count     = var.node_count
-  max_pods       = 60  
+  max_pods       = 60
   vnet_subnet_id = module.network.aks_subnet_id
   acr_id         = module.acr.acr_id
 }
@@ -128,7 +128,7 @@ module "auto_shutdown_test" {
   resource_group_name = module.rg.rg_name
   aks_name            = module.aks_test.aks_name
   location            = module.rg.location
-  schedule_time       = "22:00"
+  schedule_time       = "18:00"
 }
 
 ########################
@@ -140,5 +140,5 @@ module "auto_shutdown_prod" {
   resource_group_name = module.rg.rg_name
   aks_name            = module.aks_prod.aks_name
   location            = module.rg.location
-  schedule_time       = "22:00"
+  schedule_time       = "18:00"
 }
