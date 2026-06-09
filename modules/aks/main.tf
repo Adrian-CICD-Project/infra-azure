@@ -9,20 +9,20 @@ resource "azurerm_kubernetes_cluster" "aks" {
   }
 
   default_node_pool {
-    name       = "systempool"
-    vm_size    = var.node_vm_size
-    node_count = var.node_count
+    name           = "systempool"
+    vm_size        = var.node_vm_size
+    node_count     = var.node_count
     vnet_subnet_id = var.vnet_subnet_id
-    max_pods = var.max_pods
+    max_pods       = var.max_pods
   }
 
   network_profile {
-  network_plugin     = "azure"
-  load_balancer_sku  = "standard"
+    network_plugin    = "azure"
+    load_balancer_sku = "standard"
 
-  service_cidr       = "10.240.0.0/16"
-  dns_service_ip     = "10.240.0.10"
-}
+    service_cidr   = "10.240.0.0/16"
+    dns_service_ip = "10.240.0.10"
+  }
 
 }
 

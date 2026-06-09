@@ -1,0 +1,13 @@
+name: Terraform CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  terraform:
+    uses: Adrian-CICD-Project/ci-cd-templates/.github/workflows/terraform-ci.yml@main
+    with:
+      working-directory: "."

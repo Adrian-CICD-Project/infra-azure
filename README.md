@@ -189,7 +189,7 @@ Creates:
 - Automation Account
 - Runbook
 - Schedule
-- Daily shutdown of AKS clusters at 22:00 (Central European Time)
+- Daily shutdown of AKS clusters at 18:00 (`Europe/Warsaw`)
 
 ### key-vault
 
@@ -210,6 +210,19 @@ Used together with External Secrets Operator on AKS to securely deliver secrets 
 Application secrets (GitHub App keys, tokens) are stored in **Azure Key Vault** and delivered to AKS clusters via **External Secrets Operator**.
 
 No secrets are stored in this repository or in Git history.
+
+---
+
+## CI
+
+Every push/PR triggers two workflows (reusable templates from `ci-cd-templates`):
+
+| Workflow | What it does |
+|----------|--------------|
+| `terraform-ci.yaml` | `terraform fmt -check` → `init -backend=false` → `validate` + Checkov security scan (informational) |
+| `secret-scan.yaml` | gitleaks scan of the full git history |
+
+**Dependabot** opens weekly PRs for Terraform provider and GitHub Actions updates.
 
 ---
 

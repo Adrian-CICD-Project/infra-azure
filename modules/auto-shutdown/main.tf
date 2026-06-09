@@ -35,7 +35,7 @@ resource "azurerm_automation_schedule" "daily" {
   automation_account_name = azurerm_automation_account.aa.name
   frequency               = "Day"
   interval                = 1
-  timezone                = "Central European Standard Time"
+  timezone                = "Europe/Warsaw"
   start_time              = "${formatdate("YYYY-MM-DD", timestamp())}T${var.schedule_time}:00+01:00"
 }
 

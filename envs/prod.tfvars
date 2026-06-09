@@ -6,9 +6,9 @@
 location = "westeurope"
 
 # --- Nazwy zasobów ---
-name_prefix   = "devops-poc01"
-rg_name       = "rg-devops-poc01"
-acr_name = "acrfordevopspoc01adrian"
+name_prefix = "devops-poc01"
+rg_name     = "rg-devops-poc01"
+acr_name    = "acrfordevopspoc01adrian"
 
 
 # --- Nazwy klastrów ---
